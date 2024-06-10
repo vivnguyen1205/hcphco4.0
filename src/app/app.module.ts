@@ -33,7 +33,7 @@ import {StoreModule} from '@ngrx/store';
 import {authReducer} from './store/auth/reducer';
 import {uiReducer} from './store/ui/reducer';
 import {ProfabricComponentsModule} from '@profabric/angular-components';
-import {SidebarSearchComponent} from './components/sidebar-search/sidebar-search.component';
+// import {SidebarSearchComponent} from './components/sidebar-search/sidebar-search.component';
 import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
 import {environment} from 'environments/environment';
 import {ActivityTabComponent} from './pages/profile/activity-tab/activity-tab.component';
@@ -46,6 +46,8 @@ import {ContentHeaderComponent} from './components/content-header/content-header
 import {LoadingComponent} from './components/loading/loading.component';
 import {OverlayLoadingComponent} from './components/overlay-loading/overlay-loading.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { HomepageformComponent } from './components/homepageform/homepageform.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -71,7 +73,6 @@ registerLocaleData(localeEn, 'en-EN');
         SubMenuComponent,
         MenuItemComponent,
         ControlSidebarComponent,
-        SidebarSearchComponent,
         ActivityTabComponent,
         TimelineTabComponent,
         SettingsTabComponent,
@@ -80,7 +81,9 @@ registerLocaleData(localeEn, 'en-EN');
         SmallBoxComponent,
         ContentHeaderComponent,
         LoadingComponent,
-        OverlayLoadingComponent
+        OverlayLoadingComponent,
+        HomepageComponent,
+        HomepageformComponent
     ],
     bootstrap: [AppComponent],
     imports: [

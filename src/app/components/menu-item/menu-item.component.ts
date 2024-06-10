@@ -2,6 +2,7 @@ import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {openCloseAnimation, rotateAnimation} from './menu-item.animations';
+import { MenuSidebarComponent } from '@modules/main/menu-sidebar/menu-sidebar.component';
 
 @Component({
     selector: 'app-menu-item',

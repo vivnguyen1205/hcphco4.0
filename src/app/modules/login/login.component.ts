@@ -1,3 +1,6 @@
+import { UserComponent } from '@modules/main/header/user/user.component';
+import { ApiService } from './../../services/api.service';
+import { ElementRef, Input } from '@angular/core';
 import {
     Component,
     OnInit,
@@ -5,63 +8,107 @@ import {
     Renderer2,
     HostBinding
 } from '@angular/core';
-import {UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import { UntypedFormGroup, UntypedFormControl, Validators, FormsModule, NgModel} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AppService} from '@services/app.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import {HTMLInputELement} from '@angular/forms';
+// import {ViewChild, AfterViewInit } from '@angular/core';
+import { ViewChild, AfterViewInit} from '@angular/core';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-    @HostBinding('class') class = 'login-box';
-    public loginForm: UntypedFormGroup;
-    public isAuthLoading = false;
-    public isGoogleLoading = false;
-    public isFacebookLoading = false;
+export class LoginComponent implements OnInit{
+   
+    
+
+
 
     constructor(
+        private router: Router,
+        private ApiService: ApiService,
         private renderer: Renderer2,
-        private toastr: ToastrService,
-        private appService: AppService
-    ) {}
+        )
+        {}
 
-    ngOnInit() {
-        this.renderer.addClass(
-            document.querySelector('app-root'),
-            'login-page'
-        );
-        this.loginForm = new UntypedFormGroup({
-            email: new UntypedFormControl(null, Validators.required),
-            password: new UntypedFormControl(null, Validators.required)
-        });
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+    
+      onLogin() {                    
+        const loginObj:any = {
+            username : 'doctor2',
+            password: 'P@ssw0rd'
+            
+          };
+        this.ApiService.login(loginObj).subscribe((data: any) => {
+          console.log(data);
+          if(data.StatusCode == 200){
+            // alert('Login Success');
+            this.router.navigateByUrl('homepage')
+          }else{
+            alert('Login Failed');
+          }
+        })
+        // if(this.loginObj.userName == 'vivianisawesome' && this.loginObj.password == 'admin'){
+        //   this.router.navigateByUrl('homepage')
+    
+        // }else{
+        //   alert('Login Failed');
+        // }
+      }
     }
+//     @HostBinding('class') class = 'login-box';
+//     public loginForm: UntypedFormGroup;
+//     public isAuthLoading = false;
+//     public isGoogleLoading = false;
+//     public isFacebookLoading = false;
 
-    async loginByAuth() {
-        if (this.loginForm.valid) {
-            this.isAuthLoading = true;
-            await this.appService.loginWithEmail(
-                this.loginForm.value.email,
-                this.loginForm.value.password
-            );
+//     constructor(
+//         private renderer: Renderer2,
+        //         private toastr: ToastrService,
+        //         private appService: AppService
+    //     ) {}
 
-            this.isAuthLoading = false;
-        } else {
-            this.toastr.error('Form is not valid!');
-        }
-    }
+    //     ngOnInit() {
+        //         this.renderer.addClass(
+            //             document.querySelector('app-root'),
+            //             'login-page'
+        //         );
+        //         this.loginForm = new UntypedFormGroup({
+            //             email: new UntypedFormControl(null, Validators.required),
+            //             password: new UntypedFormControl(null, Validators.required)
+        //         });
+    //     }
 
-    async loginByGoogle() {
-        this.isGoogleLoading = true;
-        await this.appService.signInByGoogle();
-        this.isGoogleLoading = false;
-    }
+    //     async loginByAuth() {
+        //         if (this.loginForm.valid) {
+            //             this.isAuthLoading = true;
+            //             await this.appService.loginWithEmail(
+                //                 this.loginForm.value.email,
+                //                 this.loginForm.value.password
+            //             );
 
-    ngOnDestroy() {
-        this.renderer.removeClass(
-            document.querySelector('app-root'),
-            'login-page'
-        );
-    }
-}
+            //             this.isAuthLoading = false;
+        //         } else {
+            //             this.toastr.error('Form is not valid!');
+        //         }
+//     }
+
+    //     async loginByGoogle() {
+        //         this.isGoogleLoading = true;
+        //         await this.appService.signInByGoogle();
+        //         this.isGoogleLoading = false;
+    //     }
+
+    //     ngOnDestroy() {
+        //         this.renderer.removeClass(
+            //             document.querySelector('app-root'),
+            //             'login-page'
+        //         );
+    //     }
+// }

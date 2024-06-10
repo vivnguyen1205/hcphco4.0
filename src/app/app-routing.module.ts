@@ -11,17 +11,22 @@ import {NonAuthGuard} from '@guards/non-auth.guard';
 import {ForgotPasswordComponent} from '@modules/forgot-password/forgot-password.component';
 import {RecoverPasswordComponent} from '@modules/recover-password/recover-password.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
-
+import { HomepageComponent } from '@pages/homepage/homepage.component';
 const routes: Routes = [
     {
         path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+    },
+    {
+        path: '',
         component: MainComponent,
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
+        // canActivate: [AuthGuard],
+        // canActivateChild: [AuthGuard],
         children: [
             {
-                path: 'profile',
-                component: ProfileComponent
+                path: 'homepage',
+                component: HomepageComponent
             },
             {
                 path: 'blank',
@@ -38,9 +43,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent
-            }
+            },
         ]
     },
+
     {
         path: 'login',
         component: LoginComponent,

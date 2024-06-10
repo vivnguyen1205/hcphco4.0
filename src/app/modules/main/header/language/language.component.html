@@ -4,7 +4,22 @@
             <i class="flag-icon flag-icon-tr"></i>
         </a>
     </div>
-    <div slot="body">
+    <li class="nav-item">
+        <ul class="change-lang">
+        <li>
+        <a href="/change-language?id=0" data-toggle="tooltip" data-placement="bottom" data-original-title="Tiếng Việt">
+            <i class="flag-icon flag-icon-vn mr-2"></i>
+        </a>
+        </li>
+        <li>
+        <a href="/change-language?id=1" data-toggle="tooltip" data-placement="bottom" data-original-title="English">
+            <i class="flag-icon flag-icon-vn mr-2"></i>
+        </a>
+        </li>
+        </ul>
+        <input type="hidden" id="languageId" value="1">
+        </li>
+    <!-- <div slot="body">
         <a href="#" class="dropdown-item active">
             <i class="flag-icon flag-icon-tr mr-2"></i>
             <span>Turkish</span>
@@ -25,5 +40,5 @@
             <i class="flag-icon flag-icon-es mr-2"></i>
             <span>Spanish</span>
         </a>
-    </div>
+    </div> -->
 </pf-dropdown>

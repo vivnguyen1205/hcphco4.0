@@ -1,3 +1,4 @@
+// import { MenuItemComponent } from './../../../components/menu-item/menu-item.component';
 import {AppState} from '@/store/state';
 import {UiState} from '@/store/ui/state';
 import {Component, HostBinding, OnInit} from '@angular/core';
@@ -5,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {AppService} from '@services/app.service';
 import {User} from 'firebase/auth';
 import {Observable} from 'rxjs';
+import {MenuItemComponent} from '@/components/menu-item/menu-item.component';
 
 const BASE_CLASSES = 'main-sidebar elevation-4';
 @Component({
@@ -16,7 +18,7 @@ export class MenuSidebarComponent implements OnInit {
     @HostBinding('class') classes: string = BASE_CLASSES;
     public ui: Observable<UiState>;
     public user?: User;
-    public menu = MENU;
+    public menu = menu;
 
     constructor(
         public appService: AppService,
@@ -32,16 +34,16 @@ export class MenuSidebarComponent implements OnInit {
     }
 }
 
-export const MENU = [
+export const menu= [
     {
-        name: 'Dashboard',
+        name: 'Homepage',
         iconClasses: 'fas fa-tachometer-alt',
-        path: ['/']
+        path: ['homepage']
     },
     {
-        name: 'Blank',
+        name: 'Notification',
         iconClasses: 'fas fa-file',
-        path: ['/blank']
+        path: ['notification']
     },
     {
         name: 'Main Menu',
