@@ -13,14 +13,19 @@ export class ApiService {
         
         localStorage.setItem(this.tokenKey, JSON.stringify(content));
     }
+   
 
     constructor(private http: HttpClient) {}
 getData(): Observable<any> {
         return this.http.get('https://hcp-api-stg.genesolutions.vn/api/HCP/Login');
     }
+    
+
+
     login(obj: any): Observable<any> {
        
         return this.http.post('https://hcp-api-stg.genesolutions.vn/api/HCP/Login', 
         obj);
     }
+
 }
