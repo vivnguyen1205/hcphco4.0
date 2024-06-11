@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
-import { ViewChild } from '@angular/core';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {ViewChild} from '@angular/core';
 import {AppRoutingModule} from '@/app-routing.module';
 import {AppComponent} from './app.component';
 import {MainComponent} from '@modules/main/main.component';
@@ -46,8 +46,9 @@ import {ContentHeaderComponent} from './components/content-header/content-header
 import {LoadingComponent} from './components/loading/loading.component';
 import {OverlayLoadingComponent} from './components/overlay-loading/overlay-loading.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { HomepageformComponent } from './components/homepageform/homepageform.component';
+import {HomepageComponent} from './pages/homepage/homepage.component';
+import {HomepageformComponent} from './components/homepageform/homepageform.component';
+import { TokenInterceptor } from './Interceptors/token.interceptor';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -102,6 +103,13 @@ registerLocaleData(localeEn, 'en-EN');
         NgxGoogleAnalyticsModule.forRoot(environment.GA_ID),
         FontAwesomeModule
     ],
-    providers: [provideHttpClient(withInterceptorsFromDi())]
+    providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+          },
+    ]
 })
 export class AppModule {}

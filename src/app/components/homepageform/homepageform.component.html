@@ -1,126 +1,125 @@
 <div class="container-fluid" data-select2-id="922">
     <div class="card" data-select2-id="921">
         <div class="card-body cb-search" data-select2-id="920">
-    <div class="row" data-select2-id="919">
-    <!-- LAB CODE INPUT  -->
-    <div class="col-md-3 col-sm-3 col-12">
-        <div class="form-group">
-            <label class="text-color-gs">Lab code:</label>
-                <div class="input-group">
-                    <input id="labCode" type="search" class="form-control" placeholder="Enter lab code">
-                </div>
-         </div>
-    </div>
-<!-- CUSTOMER NAME INPUT  -->
-    <div class="col-md-3 col-sm-3 col-12">
-        <div class="form-group">
-            <label class="text-color-gs">Customer name:</label>
-                <div class="input-group">
-                    <input id="customerName" type="search" class="form-control" placeholder="Enter Customer name">
-                </div>
-        </div>
-    </div>
-    <!-- LOCATION SELECTOR -->
-    <div class="col-md-3 col-sm-3 col-12"> 
-
-        <div class="form-group">
-            <label class="text-color-gs">Location:</label>
-        <div id="Hospitals"> 
-        <div class="form-group">
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">--All--</option>
-            <!-- <option value="5150" data-select2-id="1178">PK Đại Anh (GSHN)</option>              
-            <option value="5178" data-select2-id="1179">PK SPK Thanh Thanh</option>            
-            <option value="6237" data-select2-id="1180">PK Tâm Phong</option>            
-            <option value="6327" data-select2-id="1181">PK Lâm Thủy (GSHN)</option>      
-            <option value="6579" data-select2-id="1182">BV ĐK Hoàng Tuấn</option>        
-            <option value="6763" data-select2-id="1183">PK BS Lê Thị Hoàng Uyên</option>  
-            <option value="7154" data-select2-id="1184">BS Phan Văn Hưởng (GS02404/HN)</option>    
-            <option value="8061" data-select2-id="1185">PK Phụ Sản Gia An</option>     
-            <option value="8290" data-select2-id="1186">Bệnh viện Đa Khoa Hoàn Mỹ Thủ Đức</option>    
-            <option value="8600" data-select2-id="1187">Công Ty TNHH Y Khoa TVD</option>    -->
-                                
-            </select>
-        </div>
-
-    </div>
-            </div>
-            
-            
-        
-    </div>
-    <!-- REFERRED DOCTOR -->
-<div class="col-md-3 col-sm-3 col-12">    
-    <div class="form-group">
-        <label class="text-color-gs">Referred Doctor :</label>
-        <div id="Hospitals"> </div>
-            <div class="form-group">
-                <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">--All--</option>
-
-                    <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
-                                            
-                </select>
-            </div>     
-        </div>
-    </div>   
-</div>  
-
-<!-- DATE RANGE  -->
-<div class = row>
-    <div class="col-md-3 col-sm-3 col-12">
-        <div class="form-group">
-                <label class="text-color-gs">Date Range: </label> 
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                        </span>
+            <div class="row" data-select2-id="919">
+                <!-- LAB CODE INPUT  -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Lab code:</label>
+                        <div class="input-group">
+                            <input id="labCode" type="search" class="form-control" placeholder="Enter lab code">
+                        </div>
                     </div>
-                  <input type="text" class="form-control float-right" id="reservation">
                 </div>
-                <!-- /.input group -->
-            </div>
-        </div>
-        <!-- DATE RANGE 2 -->
-        <div class="col-md-3 col-sm-3 col-12">
-            <div class="form-group">
-                <label class="text-color-gs">Date Range: </label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="far fa-calendar-alt"></i>
-                    </span>
-                  </div>
-                  <input type="text" class="form-control float-right" id="reservation">
+                <!-- CUSTOMER NAME INPUT  -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Customer name:</label>
+                        <div class="input-group">
+                            <input id="customerName" type="search" class="form-control"
+                                placeholder="Enter Customer name">
+                        </div>
+                    </div>
                 </div>
-                <!-- /.input group -->
-            </div>
-        </div>
-        
-        <!-- DATE RANGE 3 -->
-        
-        <div class="col-md-3 col-sm-3 col-12">
-            <div class="form-group">
-                <label class="text-color-gs">Date Range: </label>
+                <!-- LOCATION SELECTOR -->
+                <div class="col-md-3 col-sm-3 col-12">
 
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="far fa-calendar-alt"></i>
-                    </span>
-                  </div>
-                  <input type="text" class="form-control float-right" id="reservation">
+                    <div class="form-group">
+                        <label class="text-color-gs">Location:</label>
+                        <div id="Hospitals">
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">--All--</option>
+                                    <option *ngFor="let hospital of HospitalList">
+                                        {{hospital.Name}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
                 </div>
-                <!-- /.input group -->
-              </div>
-        </div>
-       <!-- INSERT MULTIPLE SELECT ELEMENT -->
-        
-    </div>
-        
-      
-    <!-- <div class="col-md-3 col-sm-3 col-12">
+              <!-- <p> {{selectedHospital.value}}</p> -->
+                                    
+                <!-- REFERRED DOCTOR -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Referred Doctor :</label>
+                        <div id="Hospitals"> </div>
+                        <div class="form-group">
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">--All--</option>
+                                    <option *ngFor="let doctor of DoctorList">
+                                        {{doctor.Name}}
+                                    </option>
+                                <!-- <option selected="selected">--All--</option> -->
+
+                                <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DATE RANGE  -->
+            <div class=row>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Date Range: </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <!-- DATE RANGE 2 -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Date Range: </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+
+                <!-- DATE RANGE 3 -->
+
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Date Range: </label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <!-- INSERT MULTIPLE SELECT ELEMENT -->
+
+            </div>
+
+
+            <!-- <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
     <label class="text-color-gs">Location:</label>
     <div id="Hospitals">
@@ -137,7 +136,7 @@
 
         </span>
     </div> -->
-    <!-- </div>
+            <!-- </div>
     </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
@@ -147,7 +146,7 @@
     </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group"> -->
-    <!-- <label class="text-color-gs">Sample recieved date at GS:</label>
+            <!-- <label class="text-color-gs">Sample recieved date at GS:</label>
     <div class="input-group">
     <div class="input-group-prepend">
     <span class="input-group-text">
@@ -186,10 +185,10 @@
     </div>
     <div class="col-md-3 col-sm-3 col-12" data-select2-id="918">
     <div class="form-group" data-select2-id="917"> -->
-    <!-- <label class="text-color-gs">Test package:</label>
+            <!-- <label class="text-color-gs">Test package:</label>
     
     </div> -->
-    <!-- </div>
+            <!-- </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
     <label class="text-color-gs">Combo:</label>
@@ -215,5 +214,5 @@
     </div>
     <div id="tableFilter"></div>
     </div> -->
-    
-</div>
+
+        </div>

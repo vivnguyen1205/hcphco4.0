@@ -72,19 +72,26 @@ placeholder="Enter your username" />
                                 </div>
                             </div>
                             <!-- <input type="text" name = "userName" placeholder="Username" id="username" required> -->
-
-                            <input placeholder="Password" class="form-control input-password text-box single-line"
-                                formControlName="password" data-val="true"
-                                data-val-length="The password is at least 6 characters" data-val-length-max="100"
-                                data-val-length-min="6" data-val-required="Please enter password" id="Password"
-                                name="Password" type="password" value="">
+<!-- PASSWORD INPUT -->
+                            <input type="password" 
+                                    id="Password" 
+                                    name="Password"placeholder="Password" 
+                                    class="form-control input-password text-box single-line"
+                                    required
+                                    data-val-required="Please enter password" 
+                                    data-val-length-min="6"
+                                    data-val-length="The password is at least 6 characters"
+                                    formControlName="password" 
+                                    data-val="true" 
+                                    data-val-length-max="100"
+                                    value="">
                             <a>
                                 <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a>
                         </div>
                     </div>
                     <!-- login button  -->
                     <a class="btn btn-primary btn-block btn-login" (click)="onLogin()">Login</a>
-                    <p class="mb-1 mt-3">
+                    <p class="mb-1 mt-23">
 
                         <a onclick="SendOTP()">Reset Password</a>
                     </p>
