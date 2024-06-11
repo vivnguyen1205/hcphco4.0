@@ -18,7 +18,7 @@ export class MenuSidebarComponent implements OnInit {
     @HostBinding('class') classes: string = BASE_CLASSES;
     public ui: Observable<UiState>;
     public user?: User;
-    public menu = menu;
+    public menu = MENU;
 
     constructor(
         public appService: AppService,
@@ -34,7 +34,7 @@ export class MenuSidebarComponent implements OnInit {
     }
 }
 
-export const menu= [
+export const MENU= [
     {
         name: 'Homepage',
         iconClasses: 'fas fa-tachometer-alt',
