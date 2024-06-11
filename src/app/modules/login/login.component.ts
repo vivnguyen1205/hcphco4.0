@@ -39,12 +39,19 @@ export class LoginComponent implements OnInit{
     throw new Error('Method not implemented.');
   }
     
-      onLogin() {                    
+      onLogin() {             
+        
+        const loginApi: string = 'https://hcp-api-stg.genesolutions.vn/api/HCP/Login'
         const loginObj:any = {
             username : 'doctor2',
             password: 'P@ssw0rd'
             
           };
+        this.ApiService.getData(loginApi).subscribe((data: any) => {
+            return this.ApiService.getData(loginApi);
+    
+        })
+        
         this.ApiService.login(loginObj).subscribe((data: any) => {
           console.log(data);
           if(data.StatusCode == 200){

@@ -16,8 +16,8 @@ export class ApiService {
    
 
     constructor(private http: HttpClient) {}
-getData(): Observable<any> {
-        return this.http.get('https://hcp-api-stg.genesolutions.vn/api/HCP/Login');
+    getData(API_LINK : string): Observable<any> {
+        return this.http.get(API_LINK);
     }
     
 
