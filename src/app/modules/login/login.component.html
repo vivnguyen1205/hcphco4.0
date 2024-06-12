@@ -14,7 +14,7 @@
             <!-- login component -->
             <div class="card-body">
                 <p class="login-box-msg">Login to the system</p>
-                <form [formGroup]="formGroup">
+                <form [formGroup]="formGroup" >
                     <!-- username -->
                     <div class="mb-3">
                         <div class="input-group">
@@ -30,6 +30,9 @@
                                 data-val-length="The password is at least 6 characters" data-val-length-max="100"
                                 data-val-length-min="6" data-val-required="Please enter password" id="username"
                                 name="username" type="username" value="">
+                                <div *ngIf="formGroup.get('username').hasError('required') && formGroup.get('username').touched">
+                                    username is required
+                                </div>
                             <!-- <a>
 <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a> -->
                         </div>

@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {HomepageformComponent} from '@components/homepageform/homepageform.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// import { HomepagetableComponent } from '@components/homepagetable/homepagetable.component';
 import {
     faBookmark,
     faEnvelope,
@@ -18,7 +19,7 @@ import {
 })
 export class HomepageComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   faBookmark = faBookmark;
   faEnvelope = faEnvelope;

@@ -9,6 +9,7 @@ import {
     HostBinding
 } from '@angular/core';
 import {Router} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
     UntypedFormGroup,
     UntypedFormControl,
@@ -54,16 +55,17 @@ export class LoginComponent implements OnInit {
             password: new FormControl('')
         });
     }
-
+    
     onLogin() {
+    
         const loginApi: string =
             'https://hcp-api-stg.genesolutions.vn/api/HCP/Login';
         debugger;
         const val = this.formGroup.value;
-        const loginObj: any = {
-            username: 'doctor2',
-            password: 'P@ssw0rd'
-        };
+        // const loginObj: any = {
+        //     username: 'doctor2',
+        //     password: 'P@ssw0rd'
+        // };
         this.ApiService.getData(loginApi).subscribe((data: any) => {
             return this.ApiService.getData(loginApi);
         });
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit {
                 // alert('Login Success');
                 this.router.navigateByUrl('homepage');
             } else {
-                alert('Login Failed');
+                console.log(this.formGroup.value);
             }
         });
         // if(this.loginObj.userName == 'vivianisawesome' && this.loginObj.password == 'admin'){
@@ -84,7 +86,8 @@ export class LoginComponent implements OnInit {
         //   alert('Login Failed');
         // }
     }
-}
+
+
 //     @HostBinding('class') class = 'login-box';
 //     public loginForm: UntypedFormGroup;
 //     public isAuthLoading = false;
@@ -135,3 +138,4 @@ export class LoginComponent implements OnInit {
 //         );
 //     }
 // }
+}

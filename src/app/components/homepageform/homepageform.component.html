@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <div class="container-fluid" data-select2-id="922">
     <div class="card" data-select2-id="921">
         <div class="card-body cb-search" data-select2-id="920">
@@ -28,9 +33,10 @@
                         <label class="text-color-gs">Location:</label>
                         <div id="Hospitals">
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;">
-                                    <option selected="selected">--All--</option>
-                                    <option *ngFor="let hospital of HospitalList">
+                                <select class="js-example-basic-single" style="width: 100%;"
+                                    (change)="onChangeHospital($event)">
+                                    <option selected="selected" value="0">--All--</option>
+                                    <option *ngFor="let hospital of HospitalList" [value]="hospital.Id">
                                         {{hospital.Name}}
                                     </option>
                                 </select>
@@ -42,8 +48,8 @@
 
 
                 </div>
-              <!-- <p> {{selectedHospital.value}}</p> -->
-                                    
+                <!-- <p> {{selectedHospital.value}}</p> -->
+
                 <!-- REFERRED DOCTOR -->
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="form-group">
@@ -52,9 +58,9 @@
                         <div class="form-group">
                             <select class="form-control select2" style="width: 100%;">
                                 <option selected="selected">--All--</option>
-                                    <option *ngFor="let doctor of DoctorList">
-                                        {{doctor.Name}}
-                                    </option>
+                                <option *ngFor="let doctor of DoctorList">
+                                    {{doctor.Name}}
+                                </option>
                                 <!-- <option selected="selected">--All--</option> -->
 
                                 <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
@@ -64,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- DATE RANGE  -->
             <div class=row>
                 <div class="col-md-3 col-sm-3 col-12">
@@ -117,9 +123,188 @@
                 <!-- INSERT MULTIPLE SELECT ELEMENT -->
 
             </div>
+            <div class=row>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Combo:</label>
+                        <div id="Hospitals"> </div>
+                        <div class="form-group">
+                            <select class="js-example-basic-single" name="hospital" style="width: 100%;"
+                                (change)="onChangeHospital($event)">
+                                <option selected="selected">--All--</option>
+                                <option *ngFor="let combo of ComboList" value="combo.Id">
+                                    {{combo.Name}}
+                                </option>
 
 
-            <!-- <div class="col-md-3 col-sm-3 col-12">
+                                <!-- <option selected="selected">--All--</option> -->
+
+                                <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
+
+                            </select>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="form-group" style="margin-right: 10px;">
+                        <label class="text-color-gs">List of samples:</label>
+                        <div class="button-checkbox">
+                            <div class="form-group">
+
+                                <input type="radio" name="radioXN" id="radioXN" autocomplete="off" value="-1"
+                                    checked="">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN" class="btn btn-secondary btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">All</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-1" class="btn btn-success btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Completed</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-3" autocomplete="off" value="11">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-3" class="btn btn-warning btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Regain blood sample</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-2" autocomplete="off" value="5">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-2" class="btn btn-danger btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Overdue</span>
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="d-none d-sm-block">&nbsp;</label>
+                        <div class="text-center text-sm-right" >
+                            <a onclick="Search('filter')" class="btn bg-gradient-primary" style="margin-right: 20px;">
+                                <i class="fa fa-search"></i> Search
+                                <div></div>
+                            </a>
+                            <a onclick="Search('export')" class="btn bg-gradient-primary">
+                                <i class="fa fa-file-excel"></i> Export excel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- CHIPS -->
+    <!-- <div class="item chk-tab chk-all">
+                    <input class="my-chk" type="checkbox" id="chk-all" name="options">
+                    <label class="tab-label" id="all-tab-label" for="chk-all">All ( )</label>
+                </div>
+
+                <div class="item chk-tab chk-in-progress">
+                    <input class="my-chk" type="checkbox" id="chk-in-progress" name="options" value="InProgress">
+                    <label class="tab-label" id="in-progress-tab-label" for="chk-in-progress">In Progress()</label>
+                </div>
+                <div class="item chk-tab chk-approved">
+                    <input class="my-chk" type="checkbox" id="chk-approved" name="options" value="Approved">
+                    <label class="tab-label" id="approved-tab-label" for="chk-approved">Approved ()</label>
+                </div>
+                <div class="item chk-tab chk-rejected">
+                    <input class="my-chk" type="checkbox" id="chk-rejected" name="options" value="Rejected">
+                    <label class="tab-label" id="rejected-tab-label" for="chk-rejected">Rejected ()</label>
+                </div>
+                <div class="item chk-tab chk-archived">
+                    <input class="my-chk" type="checkbox" id="chk-archived" name="options" value="Achived">
+                    <label class="tab-label" id="archive-tab-label" for="chk-archived">Archived ()</label>
+                </div> -->
+
+
+    <!-- <div class="col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label class="text-color-gs">List of samples:</label>
+                    <div class="button-checkbox">
+                        <div class="form-group">
+                      
+                                <input type="radio" name="radioXN" id="radioXN" autocomplete="off" value="-1"
+                                    checked="">
+                                <div class="btn-group">
+                                    <label for="radioXN" class="btn btn-secondary btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">All</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="inline-block">
+                                <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13">
+                                <div class="btn-group">
+                                    <label for="radioXN-1" class="btn btn-success btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Completed</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="inline-block">
+                                <input type="radio" name="radioXN" id="radioXN-3" autocomplete="off" value="11">
+                                <div class="btn-group">
+                                    <label for="radioXN-3" class="btn btn-warning btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Regain blood sample</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="inline-block">
+                                <input type="radio" name="radioXN" id="radioXN-2" autocomplete="off" value="5">
+                                <div class="btn-group">
+                                    <label for="radioXN-2" class="btn btn-danger btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Overdue</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+    <!-- DATE RANGE 2 -->
+
+    <!-- DATE RANGE 3 -->
+
+
+    <!-- INSERT MULTIPLE SELECT ELEMENT -->
+
+</div>
+
+
+<!-- <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
     <label class="text-color-gs">Location:</label>
     <div id="Hospitals">
@@ -136,7 +321,7 @@
 
         </span>
     </div> -->
-            <!-- </div>
+<!-- </div>
     </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
@@ -146,7 +331,7 @@
     </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group"> -->
-            <!-- <label class="text-color-gs">Sample recieved date at GS:</label>
+<!-- <label class="text-color-gs">Sample recieved date at GS:</label>
     <div class="input-group">
     <div class="input-group-prepend">
     <span class="input-group-text">
@@ -185,10 +370,10 @@
     </div>
     <div class="col-md-3 col-sm-3 col-12" data-select2-id="918">
     <div class="form-group" data-select2-id="917"> -->
-            <!-- <label class="text-color-gs">Test package:</label>
+<!-- <label class="text-color-gs">Test package:</label>
     
     </div> -->
-            <!-- </div>
+<!-- </div>
     <div class="col-md-3 col-sm-3 col-12">
     <div class="form-group">
     <label class="text-color-gs">Combo:</label>
@@ -214,5 +399,3 @@
     </div>
     <div id="tableFilter"></div>
     </div> -->
-
-        </div>

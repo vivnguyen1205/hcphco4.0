@@ -17,16 +17,20 @@ export class HomepageformComponent implements OnInit{
   HospitalList: any []=[];
   HospitalID: number;
 // DOCTOR API
-  doctorApi: string = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryDoctor?HospitalId=4983';
   doctor: any[];
   DoctorList: any []=[];
+// COMBO API 
+  comboApi: string = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryCombo';
+  combo: any[];
+  ComboList: any []=[];
 
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getHospital();
-    this.getDoctor();
+    // this.getDoctor();
+    // this.getCombo();
   }
   getHospital() {
     this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
@@ -36,10 +40,20 @@ export class HomepageformComponent implements OnInit{
   })
 }
 
-getHospitalID(){
-  const selectedHospital = document.getElementById('hospital') as HTMLSelectElement;
-  return selectedHospital.value;
-}
+onChangeHospital(hospitalId: any) {
+ 
+  const doctorApi = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryDoctor?hospitalId=' + hospitalId?.target?.value;
+  this.apiService.getData(doctorApi).subscribe((data: any) => {
+    this.DoctorList = data.Data;
+    // console.log(this.DoctorList);
+  });
+  
+  }
+
+// getHospitalID(){
+//   const selectedHospital = document.getElementById('hospital') as HTMLSelectElement;
+//   return selectedHospital.value;
+// }
 //   getHospitalID(HospitalList: any){
 //     this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
 //     return this.Hospital.ID;
@@ -47,13 +61,14 @@ getHospitalID(){
 
 // }
 
-getDoctor() {
-  this.apiService.getData(this.doctorApi).subscribe((data: any) => {
- 
-    this.DoctorList = data.Data;
-    console.log(this.DoctorList);
-})
 
 
+
+getCombo(){
+  this.apiService.getData(this.comboApi).subscribe((data: any) => {
+    this.ComboList = data.Data;
+    console.log(this.ComboList);
+  }
+  )
 }
 }

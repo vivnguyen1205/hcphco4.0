@@ -2,6 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {ViewChild} from '@angular/core';
+import { NotificationComponent } from '@pages/notification/notification.component';
+import { DropdownModule } from 'primeng/dropdown';
 import {AppRoutingModule} from '@/app-routing.module';
 import {AppComponent} from './app.component';
 import {MainComponent} from '@modules/main/main.component';
@@ -18,7 +20,6 @@ import {DashboardComponent} from '@pages/dashboard/dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
 import {MessagesComponent} from '@modules/main/header/messages/messages.component';
 import {NotificationsComponent} from '@modules/main/header/notifications/notifications.component';
-
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localeEn from '@angular/common/locales/en';
 import {UserComponent} from '@modules/main/header/user/user.component';
@@ -49,11 +50,15 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HomepageComponent} from './pages/homepage/homepage.component';
 import {HomepageformComponent} from './components/homepageform/homepageform.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+//  import { Select2Module } from 'ng-select2-component';
+// import { HomepagetableComponent } from './components/homepagetable/homepagetable.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
     declarations: [
+        NotificationComponent,
+    
         AppComponent,
         MainComponent,
         LoginComponent,
@@ -84,7 +89,8 @@ registerLocaleData(localeEn, 'en-EN');
         LoadingComponent,
         OverlayLoadingComponent,
         HomepageComponent,
-        HomepageformComponent
+        HomepageformComponent,
+ 
     ],
     bootstrap: [AppComponent],
     imports: [
