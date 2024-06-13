@@ -50,17 +50,6 @@ onChangeHospital(hospitalId: any) {
   
   }
 
-// getHospitalID(){
-//   const selectedHospital = document.getElementById('hospital') as HTMLSelectElement;
-//   return selectedHospital.value;
-// }
-//   getHospitalID(HospitalList: any){
-//     this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
-//     return this.Hospital.ID;
-//     })
-
-// }
-
 getCombo(){
   this.apiService.getData(this.comboApi).subscribe((data: any) => {
     this.ComboList = data.Data;
