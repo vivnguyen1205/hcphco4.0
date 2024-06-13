@@ -79,12 +79,6 @@ export class LoginComponent implements OnInit {
                 console.log(this.formGroup.value);
             }
         });
-        // if(this.loginObj.userName == 'vivianisawesome' && this.loginObj.password == 'admin'){
-        //   this.router.navigateByUrl('homepage')
-
-        // }else{
-        //   alert('Login Failed');
-        // }
     }
 
 
@@ -100,42 +94,4 @@ export class LoginComponent implements OnInit {
 //         private appService: AppService
 //     ) {}
 
-//     ngOnInit() {
-//         this.renderer.addClass(
-//             document.querySelector('app-root'),
-//             'login-page'
-//         );
-//         this.loginForm = new UntypedFormGroup({
-//             email: new UntypedFormControl(null, Validators.required),
-//             password: new UntypedFormControl(null, Validators.required)
-//         });
-//     }
-
-//     async loginByAuth() {
-//         if (this.loginForm.valid) {
-//             this.isAuthLoading = true;
-//             await this.appService.loginWithEmail(
-//                 this.loginForm.value.email,
-//                 this.loginForm.value.password
-//             );
-
-//             this.isAuthLoading = false;
-//         } else {
-//             this.toastr.error('Form is not valid!');
-//         }
-//     }
-
-//     async loginByGoogle() {
-//         this.isGoogleLoading = true;
-//         await this.appService.signInByGoogle();
-//         this.isGoogleLoading = false;
-//     }
-
-//     ngOnDestroy() {
-//         this.renderer.removeClass(
-//             document.querySelector('app-root'),
-//             'login-page'
-//         );
-//     }
-// }
 }
