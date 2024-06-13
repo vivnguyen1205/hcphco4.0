@@ -38,35 +38,6 @@ export class TokenInterceptor implements HttpInterceptor {
       const errMessage = await (new Response(error.error)).text();
     }
 
-    // Invalid token error
-    // else if (error.status === 401) {
-    //   return this.refreshToken().pipe(
-    //     switchMap(() => {
-    //       request = this.addAuthHeader(request);
-    //       return next.handle(request);
-    //     }),
-    //     catchError(e => {
-    //       if (e.status !== 401) {
-    //         return this.handleResponseError(e);
-    //       } else {
-    //         this.logout();
-    //       }
-    //     }));
-    // }
-
-    // // Access denied error
-    // else if (error.status === 403) {
-    //   // Logout
-    //   this.logout();
-    //   this.boardCastService.httpError.next(true);
-
-    // }
-    // // Maintenance error
-    // else if (error.status === 500) {
-    //   this.alertService.showError('Hệ thống có lỗi xảy ra. Vui lòng liên hệ admin');
-    //   this.boardCastService.httpError.next(true);
-    // }
-
     return throwError(error);
   }
 

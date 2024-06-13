@@ -13,44 +13,44 @@ import {AppService} from '@services/app.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard  {
     constructor(
         private router: Router,
         private appService: AppService
     ) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return this.getProfile();
-    }
+    // canActivate(
+    //     next: ActivatedRouteSnapshot,
+    //     state: RouterStateSnapshot
+    // ):
+    //     | Observable<boolean | UrlTree>
+    //     | Promise<boolean | UrlTree>
+    //     | boolean
+    //     | UrlTree {
+    //     return this.getProfile();
+    // }
 
-    canActivateChild(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return this.canActivate(next, state);
-    }
+    // canActivateChild(
+    //     next: ActivatedRouteSnapshot,
+    //     state: RouterStateSnapshot
+    // ):
+    //     | Observable<boolean | UrlTree>
+    //     | Promise<boolean | UrlTree>
+    //     | boolean
+    //     | UrlTree {
+    //     return this.canActivate(next, state);
+    // }
 
-    async getProfile() {
-        if (this.appService.user) {
-            return true;
-        }
+    // async getProfile() {
+    //     if (this.appService.user) {
+    //         return true;
+    //     }
 
-        try {
-            await this.appService.getProfile();
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
+    //     try {
+    //         await this.appService.getProfile();
+    //         return true;
+    //     } catch (error) {
+    //         return false;
+    //     }
+    // }
 }

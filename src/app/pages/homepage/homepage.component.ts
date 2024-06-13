@@ -21,10 +21,10 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-  faBookmark = faBookmark;
-  faEnvelope = faEnvelope;
-  faChartSimple = faChartSimple;
-  faCartShopping = faCartShopping;
-  faUserPlus = faUserPlus;
-  faChartPie = faChartPie;
+  // faBookmark = faBookmark;
+  // faEnvelope = faEnvelope;
+  // faChartSimple = faChartSimple;
+  // faCartShopping = faCartShopping;
+  // faUserPlus = faUserPlus;
+  // faChartPie = faChartPie;
 }

@@ -1,7 +1,3 @@
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <div class="container-fluid" data-select2-id="922">
     <div class="card" data-select2-id="921">
@@ -75,7 +71,7 @@
             <div class=row>
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="form-group">
-                        <label class="text-color-gs">Date Range: </label>
+                        <label class="text-color-gs">Sample recieved date at GS: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -90,7 +86,7 @@
                 <!-- DATE RANGE 2 -->
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="form-group">
-                        <label class="text-color-gs">Date Range: </label>
+                        <label class="text-color-gs">Sample draw date: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -107,7 +103,7 @@
 
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="form-group">
-                        <label class="text-color-gs">Date Range: </label>
+                        <label class="text-color-gs">Lab completion date: </label>
 
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -123,25 +119,34 @@
                 <!-- INSERT MULTIPLE SELECT ELEMENT -->
 
             </div>
+            <!-- FIX THIS  -->
             <div class=row>
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="form-group">
                         <label class="text-color-gs">Combo:</label>
-                        <div id="Hospitals"> </div>
+                        <div id="combo"> </div>
                         <div class="form-group">
-                            <select class="js-example-basic-single" name="hospital" style="width: 100%;"
-                                (change)="onChangeHospital($event)">
+                            <select class="form-control select2" style="width: 100%;">
                                 <option selected="selected">--All--</option>
-                                <option *ngFor="let combo of ComboList" value="combo.Id">
+                                <option *ngFor="let combo of ComboList">
+                                    {{combo.Name}}
+                                </option>
+                          
+
+
+                            </select>
+
+                            <!-- <select class="js-example-basic-single"  style="width: 100%;">
+                                <option selected="selected">--All--</option>
+                            
+                                <option *ngFor="let combo of ComboList">
                                     {{combo.Name}}
                                 </option>
 
 
-                                <!-- <option selected="selected">--All--</option> -->
+                
 
-                                <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
-
-                            </select>
+                            </select>  -->
 
 
                         </div>
@@ -219,183 +224,3 @@
         </div>
 
     </div>
-    <!-- CHIPS -->
-    <!-- <div class="item chk-tab chk-all">
-                    <input class="my-chk" type="checkbox" id="chk-all" name="options">
-                    <label class="tab-label" id="all-tab-label" for="chk-all">All ( )</label>
-                </div>
-
-                <div class="item chk-tab chk-in-progress">
-                    <input class="my-chk" type="checkbox" id="chk-in-progress" name="options" value="InProgress">
-                    <label class="tab-label" id="in-progress-tab-label" for="chk-in-progress">In Progress()</label>
-                </div>
-                <div class="item chk-tab chk-approved">
-                    <input class="my-chk" type="checkbox" id="chk-approved" name="options" value="Approved">
-                    <label class="tab-label" id="approved-tab-label" for="chk-approved">Approved ()</label>
-                </div>
-                <div class="item chk-tab chk-rejected">
-                    <input class="my-chk" type="checkbox" id="chk-rejected" name="options" value="Rejected">
-                    <label class="tab-label" id="rejected-tab-label" for="chk-rejected">Rejected ()</label>
-                </div>
-                <div class="item chk-tab chk-archived">
-                    <input class="my-chk" type="checkbox" id="chk-archived" name="options" value="Achived">
-                    <label class="tab-label" id="archive-tab-label" for="chk-archived">Archived ()</label>
-                </div> -->
-
-
-    <!-- <div class="col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                    <label class="text-color-gs">List of samples:</label>
-                    <div class="button-checkbox">
-                        <div class="form-group">
-                      
-                                <input type="radio" name="radioXN" id="radioXN" autocomplete="off" value="-1"
-                                    checked="">
-                                <div class="btn-group">
-                                    <label for="radioXN" class="btn btn-secondary btn-sm">
-                                        <span class="fa fa-check-square fa-lg"></span>
-                                        <span class="fa fa-square fa-lg"></span>
-                                        <span class="content">All</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="inline-block">
-                                <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13">
-                                <div class="btn-group">
-                                    <label for="radioXN-1" class="btn btn-success btn-sm">
-                                        <span class="fa fa-check-square fa-lg"></span>
-                                        <span class="fa fa-square fa-lg"></span>
-                                        <span class="content">Completed</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="inline-block">
-                                <input type="radio" name="radioXN" id="radioXN-3" autocomplete="off" value="11">
-                                <div class="btn-group">
-                                    <label for="radioXN-3" class="btn btn-warning btn-sm">
-                                        <span class="fa fa-check-square fa-lg"></span>
-                                        <span class="fa fa-square fa-lg"></span>
-                                        <span class="content">Regain blood sample</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="inline-block">
-                                <input type="radio" name="radioXN" id="radioXN-2" autocomplete="off" value="5">
-                                <div class="btn-group">
-                                    <label for="radioXN-2" class="btn btn-danger btn-sm">
-                                        <span class="fa fa-check-square fa-lg"></span>
-                                        <span class="fa fa-square fa-lg"></span>
-                                        <span class="content">Overdue</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-    <!-- DATE RANGE 2 -->
-
-    <!-- DATE RANGE 3 -->
-
-
-    <!-- INSERT MULTIPLE SELECT ELEMENT -->
-
-</div>
-
-
-<!-- <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="text-color-gs">Location:</label>
-    <div id="Hospitals">
-        <select class="select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" data-select2-id="650">         
-          </select>
-        <span class="select2 select2-container select2-container--default seglect2-container--below" dir="ltr" data-select2-id="651" style="width: 100%;">
-            <span class="selection">
-                <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-tv9e-container">
-                    <b role="presentation"></b>
-                </span>
-            </span>
-        </span>
-        <span class="dropdown-wrapper" aria-hidden="true">
-
-        </span>
-    </div> -->
-<!-- </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="text-color-gs">Referred doctor:</label>
-    <div id="doctor"><select class="select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" data-select2-id="654">         <option value="-1" data-select2-id="656">--All --</option>              </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="655" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-439x-container"><span class="select2-selection__rendered" id="select2-439x-container" role="textbox" aria-readonly="true" title="--All--">--All hello--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group"> -->
-<!-- <label class="text-color-gs">Sample recieved date at GS:</label>
-    <div class="input-group">
-    <div class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="far fa-calendar-alt"></i>
-    </span>
-    </div>
-    <input type="text" class="form-control float-right date-range" id="timeReceive">
-    </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="text-color-gs">Sample draw date:</label>
-    <div class="input-group">
-    <div class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="far fa-calendar-alt"></i>
-    </span>
-    </div>
-    <input type="text" class="form-control float-right date-range" id="timeCollect">
-    </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="text-color-gs">Lab completion date:</label>
-    <div class="input-group">
-    <div class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="far fa-calendar-alt"></i>
-    </span>
-    </div>
-    <input type="text" class="form-control float-right date-range" id="timeCompleteLab">
-    </div>
-    </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-12" data-select2-id="918">
-    <div class="form-group" data-select2-id="917"> -->
-<!-- <label class="text-color-gs">Test package:</label>
-    
-    </div> -->
-<!-- </div>
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="text-color-gs">Combo:</label>
-    
-    </div>
-    <div class="col-md-6 col-sm-6 col-12">
-
-    <div class="col-md-3 col-sm-3 col-12">
-    <div class="form-group">
-    <label class="d-none d-sm-block">&nbsp;</label>
-    <div class="text-center text-sm-right">
-    <a onclick="Search('filter')" class="btn bg-gradient-primary">
-    <i class="fa fa-search"></i> Search
-    </a>
-    <a onclick="Search('export')" class="btn bg-gradient-primary">
-    <i class="fa fa-file-excel"></i> Export excel
-    </a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div id="tableFilter"></div>
-    </div> -->

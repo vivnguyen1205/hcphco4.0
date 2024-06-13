@@ -21,7 +21,6 @@ export class HomepageformComponent implements OnInit{
   DoctorList: any []=[];
 // COMBO API 
   comboApi: string = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryCombo';
-  combo: any[];
   ComboList: any []=[];
 
 
@@ -29,6 +28,7 @@ export class HomepageformComponent implements OnInit{
 
   ngOnInit(): void {
     this.getHospital();
+    this.getCombo();
     // this.getDoctor();
     // this.getCombo();
   }
@@ -60,9 +60,6 @@ onChangeHospital(hospitalId: any) {
 //     })
 
 // }
-
-
-
 
 getCombo(){
   this.apiService.getData(this.comboApi).subscribe((data: any) => {

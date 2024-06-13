@@ -21,6 +21,10 @@
                                     <div id="Hospitals"> </div>
                                     <div class="form-group">
                                         <select class="form-control select2" style="width: 100%;">
+                                            <option selected="selected">--All--</option>
+                                            <option *ngFor="let hospital of HospitalList">
+                                                {{hospital.Name}}
+                                            </option>
                                            
                                             <!-- <option *ngFor="let doctor of DoctorList">
                                                 {{doctor.Name}}
@@ -34,27 +38,6 @@
                                     </div>
                                 
                             </div>
-                            <!-- <label class="text-color-gs">Phòng khám/Bệnh viện</label>
-                            <div id="Hospitals"><select class="select2 select2-hidden-accessible" style="width: 100%;"
-                                    tabindex="-1" aria-hidden="true" data-select2-id="30">
-                                    <option typecode="bv" value="4773" data-select2-id="32">BV PS Mekong</option>
-                                    <option typecode="pk" value="4925">PK BS Trần Thị Sơn Trà</option>
-                                    <option typecode="pk" value="4934">PK BS Trương Ngọc Thảo</option>
-                                    <option typecode="other" value="4983">VINCIBIO</option>
-                                    <option typecode="pk" value="5141">PK Thanh Hân</option>
-                                    <option typecode="bv" value="6859">PXN Y Khoa 48</option>
-                                    <option typecode="bv" value="6987">PK BS Đoàn Thị Kim Dung</option>
-                                </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                                    data-select2-id="31" style="width: 100%;"><span class="selection"><span
-                                            class="select2-selection select2-selection--single" role="combobox"
-                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                            aria-disabled="false" aria-labelledby="select2-4b9z-container"><span
-                                                class="select2-selection__rendered" id="select2-4b9z-container"
-                                                role="textbox" aria-readonly="true" title="BV PS Mekong">BV PS
-                                                Mekong</span><span class="select2-selection__arrow"
-                                                role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                        class="dropdown-wrapper" aria-hidden="true"></span></span></div> -->
                         </div>
                     </div>
                
