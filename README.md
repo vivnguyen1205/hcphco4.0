@@ -35,7 +35,7 @@ To login website you can `create` a user. All authenication related features are
 
 You need to run `npm run firebase:start` on a different terminal and keep it running.
 
-Then, in the project directory, you can run: `npm run serve`
+Then, in the project directory, you can run: `npm run start`
 
 Runs the app in the development mode.
 
